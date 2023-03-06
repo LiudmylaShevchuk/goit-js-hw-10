@@ -9,4 +9,4 @@ const fetchCountries = function (name) {
   });
 };
 
-export default { fetchCountries };
+export default fetchCountries;
