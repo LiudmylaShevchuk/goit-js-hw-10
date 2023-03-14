@@ -3,7 +3,7 @@ import fetchCountries from './fetchCountries';
 import { Notify } from 'notiflix';
 import debounce from 'lodash.debounce';
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 100;
 
 const refs = {
   countriesNameInput: document.querySelector('#search-box'),
@@ -70,7 +70,9 @@ function renderSummary(elements) {
 function createSummary(element) {
   return element.map(
     ({ name, capital, population, flags, languages }) => `
-        <img scr="${flags.svg}" alt="${name.official}" width="120" height="80">
+         <img src="${flags.svg}" alt="${
+      name.common
+    }" class="image" width="120" height="80"/>
         <h1 class="country-info__title">${name.official}</h1>
         <ul class="country-info__list">
         <li class="country-info__item">
@@ -90,7 +92,12 @@ function createSummaryList(elements) {
       ({ name, flags }) =>
         `
         <li class="country-list__item">
-        <img class="country-list__img" scr="${flags.svg}" alt="${name.official}" width="60" height="40">
+         <img
+                    src="${flags.svg}"
+                    alt="${name.common}"
+                    class="image"
+                    width="80" height="60"
+                />
          ${name.official}
          </li>
         `
